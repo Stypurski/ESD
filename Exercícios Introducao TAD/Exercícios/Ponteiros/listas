@@ -1,0 +1,83 @@
+// 1- crie uma função que aloque um vetor de double e o retorne 
+#include <stdio.h>
+#include <stdlib.h>
+
+double* alocVetor(int tam){
+    double *v = (double *)malloc(tam*sizeof(double));
+
+    if(v == NULL){
+        printf("Erro ao alocar memoria");
+        return NULL;
+    }
+
+    return v;
+}
+// 2 -crie uma função que aloque um vetor de double retornando-o por referencia
+#include <stdio.h>
+#include <stdlib.h>
+
+void *alocVetor(double **vo, int tam){
+
+    *vo = (double *)malloc(tam*sizeof(double));
+
+    if(vo == NULL){
+        printf("Erro ao alocar memoria");
+        return;
+    }
+
+}
+// 3- crie uma função que desaloque um dado vetor, "setando-o" como NULL apos a desalocação
+#include <stdio.h>
+#include <stdlib.h>
+
+void desaloca(double **v){
+    free(*v);
+    *v = NULL;
+}
+// 4- crie uma função que faca uma copia de um vetor: faca com retorno da função e retorno por referencia
+#include <stdio.h>
+#include <stdlib.h>
+
+puts("COPIA E RETORNA A FUNCAO");
+double* copia(double **vo, int tam){
+    double *vc = (double *)malloc(tam * sizeof(double));
+
+    for(int i= 0; i<tam; i++){
+        vc[i] = vo[i];
+    }
+
+    return vc;
+}
+
+puts("COPIA E RETORNA DIFERENCA");
+double copiaref(double **vo, in tam, double *vc){
+    *vc = (double *)malloc(tam * sizeof(double));
+
+    for(int i=0; i<tam; i++){
+        (*vc)[i] = vc;
+    }
+}
+
+//5- crie uma função que calcule o minimo e o maximo de um vetor de inteiros e retorne os valores em duas variaveis diferentes
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void calculo(const int *vo, int *min, int *max, int tam){
+
+    int aux1, aux2;
+    aux1 = vo[0];
+    aux2 = vo[0];
+
+    for(int i =0; i<tam; i++){
+        if(vo[i]>aux1){
+            aux1 =vo[i];
+        }
+        if(vo[i]<aux2){
+            aux2 = vo[i];
+        }
+    }
+    *min = aux2;
+    *max = aux1;
+}
